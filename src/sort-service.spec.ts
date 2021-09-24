@@ -85,6 +85,95 @@ Deno.test("should sort an array of objects by a single attribute descending", ()
     assertEquals(actualOutput, expectedOutput)
 
 })
+// Deno.test("should sort an array of objects by multiple attributes ascending", () => {
+
+//     const testInput = [
+//         {
+//             exchangeName: "Bitmex",
+//             longRate: 51.36,
+//         },
+//         {
+//             exchangeName: "Binance",
+//             longRate: 51.36,
+//         },
+//         {
+//             exchangeName: "Bybit",
+//             longRate: 55.36,
+//         },
+//     ]
+
+//     const expectedOutput = [
+//         {
+//             exchangeName: "Binance",
+//             longRate: 51.36,
+//         },
+
+//         {
+//             exchangeName: "Bitmex",
+//             longRate: 51.36,
+//         },
+//         {
+//             exchangeName: "Bybit",
+//             longRate: 55.36,
+//         },
+//     ]
+
+//     const actualOutput = SortService.sort(testInput, Direction.ASCENDING, ['longRate'])
+
+//     assertEquals(actualOutput.length, expectedOutput.length)
+//     assertEquals(actualOutput, expectedOutput)
+
+// })
+
+
+
+Deno.test("should sort an array of objects by multiple attributes descending", () => {
+
+    const testInput = [
+        {
+            exchangeName: "Bitmex",
+            longRate: 51.36,
+        },
+        {
+            exchangeName: "Binance",
+            longRate: 51.36,
+        },
+        {
+            exchangeName: "Bybit",
+            longRate: 55.36,
+        },
+    ]
+
+    const expectedOutput = [
+        {
+            exchangeName: "Bybit",
+            longRate: 55.36,
+        },
+
+        {
+            exchangeName: "Bitmex",
+            longRate: 51.36,
+        },
+
+        {
+            exchangeName: "Binance",
+            longRate: 51.36,
+        },
+
+    ]
+
+    const actualOutput = SortService.sort(testInput, Direction.DESCENDING, ['longRate'])
+
+    assertEquals(actualOutput.length, expectedOutput.length)
+    assertEquals(actualOutput, expectedOutput)
+
+})
+
+
+
+
+
+
 
 
 Deno.test("should sort an array of numbers ascending", () => {

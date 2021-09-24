@@ -11,8 +11,6 @@ import { Direction, SortService } from "https://deno.land/x/sort/src/sort-servic
 
 const testInput = [4, 9, 10, 8, 7]
 
-const expectedOutput = [10, 9, 8, 7, 4]
-
 const actualOutput = SortService.sort(testInput, Direction.DESCENDING, [''])
 
 console.log(actualOutput)
@@ -40,22 +38,6 @@ const testInput = [
         },
     ]
 
-const expectedOutput = [
-        {
-            exchangeName: "Binance",
-            longRate: 51.36,
-        },
-
-        {
-            exchangeName: "Bitmex",
-            longRate: 53.36,
-        },
-        {
-            exchangeName: "Bybit",
-            longRate: 55.36,
-        },
-    ]
-
 const actualOutput = SortService.sort(testInput, Direction.ASCENDING, ['longRate'])
 
 console.log(actualOutput)
@@ -74,22 +56,6 @@ const testInput = [
         },
         {
             exchangeName: "Binance",
-            longRate: 51.36,
-        },
-        {
-            exchangeName: "Bybit",
-            longRate: 55.36,
-        },
-    ]
-
-const expectedOutput = [
-        {
-            exchangeName: "Binance",
-            longRate: 51.36,
-        },
-
-        {
-            exchangeName: "Bitmex",
             longRate: 51.36,
         },
         {
