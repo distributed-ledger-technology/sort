@@ -13,7 +13,7 @@ export class SortService {
 
     private static attributeNameToBeSortedBy: string
 
-    public sort(arrayToBeSorted: any[], direction: Direction, toBeSortedBy: string[]) {
+    public static sort(arrayToBeSorted: any[], direction: Direction, toBeSortedBy: string[]) {
 
         if (toBeSortedBy !== undefined) {
             SortService.attributeNameToBeSortedBy = toBeSortedBy[0]
@@ -23,7 +23,7 @@ export class SortService {
 
         if (direction === Direction.ASCENDING) {
 
-            sortedArray = arrayToBeSorted.sort(this.compareAscending)
+            sortedArray = arrayToBeSorted.sort(SortService.compareAscending)
 
         } else if (direction === Direction.DESCENDING) {
 
@@ -39,7 +39,7 @@ export class SortService {
 
     }
 
-    public compareAscending(object1: any, object2: any) {
+    public static compareAscending(object1: any, object2: any) {
 
         if (SortService.attributeNameToBeSortedBy === '') {
 
@@ -47,8 +47,6 @@ export class SortService {
             if (object1 > object2) { return 1 }
 
         } else {
-
-            console.log(SortService.attributeNameToBeSortedBy)
 
             if (object1[SortService.attributeNameToBeSortedBy] < object2[SortService.attributeNameToBeSortedBy]) { return -1 }
             if (object1[SortService.attributeNameToBeSortedBy] > object2[SortService.attributeNameToBeSortedBy]) { return 1 }
@@ -59,7 +57,7 @@ export class SortService {
 
     }
 
-    public compareDescending(object1: any, object2: any) {
+    public static compareDescending(object1: any, object2: any) {
 
         if (SortService.attributeNameToBeSortedBy === '') {
 
@@ -67,8 +65,6 @@ export class SortService {
             if (object1 < object2) { return 1 }
 
         } else {
-
-            console.log(SortService.attributeNameToBeSortedBy)
 
             if (object1[SortService.attributeNameToBeSortedBy] > object2[SortService.attributeNameToBeSortedBy]) { return -1 }
             if (object1[SortService.attributeNameToBeSortedBy] < object2[SortService.attributeNameToBeSortedBy]) { return 1 }

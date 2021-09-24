@@ -35,9 +35,7 @@ Deno.test("should sort an array of objects by a single attribute ascending", () 
         },
     ]
 
-    const cut = new SortService()
-
-    const actualOutput = cut.sort(testInput, Direction.ASCENDING, ['longRate'])
+    const actualOutput = SortService.sort(testInput, Direction.ASCENDING, ['longRate'])
 
     assertEquals(actualOutput.length, expectedOutput.length)
     assertEquals(actualOutput, expectedOutput)
@@ -81,9 +79,21 @@ Deno.test("should sort an array of objects by a single attribute descending", ()
 
     ]
 
-    const cut = new SortService()
+    const actualOutput = SortService.sort(testInput, Direction.DESCENDING, ['longRate'])
 
-    const actualOutput = cut.sort(testInput, Direction.DESCENDING, ['longRate'])
+    assertEquals(actualOutput.length, expectedOutput.length)
+    assertEquals(actualOutput, expectedOutput)
+
+})
+
+
+Deno.test("should sort an array of numbers ascending", () => {
+
+    const testInput = [4, 9, 10, 8, 7]
+
+    const expectedOutput = [4, 7, 8, 9, 10]
+
+    const actualOutput = SortService.sort(testInput, Direction.ASCENDING, [''])
 
     assertEquals(actualOutput.length, expectedOutput.length)
     assertEquals(actualOutput, expectedOutput)
@@ -97,27 +107,7 @@ Deno.test("should sort an array of numbers descending", () => {
 
     const expectedOutput = [10, 9, 8, 7, 4]
 
-    const cut = new SortService()
-
-    const actualOutput = cut.sort(testInput, Direction.DESCENDING, [''])
-
-    console.log(actualOutput)
-    console.log(expectedOutput)
-
-    assertEquals(actualOutput.length, expectedOutput.length)
-    assertEquals(actualOutput, expectedOutput)
-
-})
-
-Deno.test("should sort an array of numbers ascending", () => {
-
-    const testInput = [4, 9, 10, 8, 7]
-
-    const expectedOutput = [4, 7, 8, 9, 10]
-
-    const cut = new SortService()
-
-    const actualOutput = cut.sort(testInput, Direction.ASCENDING, [''])
+    const actualOutput = SortService.sort(testInput, Direction.DESCENDING, [''])
 
     assertEquals(actualOutput.length, expectedOutput.length)
     assertEquals(actualOutput, expectedOutput)
