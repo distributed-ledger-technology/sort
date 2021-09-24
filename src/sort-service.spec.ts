@@ -152,7 +152,6 @@ Deno.test("should sort an array of objects by multiple attributes ascending", ()
 
     const actualOutput = SortService.sort(testInput, Direction.ASCENDING, ['longRate', 'exchangeName'])
 
-    console.log(actualOutput)
     assertEquals(actualOutput, expectedOutput)
 
 })

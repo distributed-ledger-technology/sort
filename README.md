@@ -1,6 +1,8 @@
 # Sort
 
-Sorting Arrays as simple as it gets.
+Sorting Arrays as simple as it gets.  
+  
+This module is published at: https://deno.land/x/sort.  
 
 Please check the [unit tests](https://deno.land/x/sort/src/sort-service.spec.ts) to see more usage examples.
 
