@@ -11,12 +11,12 @@ export enum Direction {
 
 export class SortService {
 
-    private static attributeNameToBeSortedBy: string
+    private static attributeNameToBeSortedBy: string[] = []
 
     public static sort(arrayToBeSorted: any[], direction: Direction, toBeSortedBy: string[]) {
 
         if (toBeSortedBy !== undefined) {
-            SortService.attributeNameToBeSortedBy = toBeSortedBy[0]
+            SortService.attributeNameToBeSortedBy = toBeSortedBy
         }
 
         let sortedArray
@@ -41,15 +41,23 @@ export class SortService {
 
     public static compareAscending(object1: any, object2: any) {
 
-        if (SortService.attributeNameToBeSortedBy === '') {
+        if (SortService.attributeNameToBeSortedBy.length === 0) {
 
             if (object1 < object2) { return -1 }
             if (object1 > object2) { return 1 }
 
         } else {
 
-            if (object1[SortService.attributeNameToBeSortedBy] < object2[SortService.attributeNameToBeSortedBy]) { return -1 }
-            if (object1[SortService.attributeNameToBeSortedBy] > object2[SortService.attributeNameToBeSortedBy]) { return 1 }
+            for (const compareField of SortService.attributeNameToBeSortedBy) {
+
+
+                if (object1[compareField] === object2[compareField]) { continue }
+
+                if (object1[compareField] < object2[compareField]) { return -1 }
+
+                if (object1[compareField] > object2[compareField]) { return 1 }
+
+            }
 
         }
 
@@ -59,16 +67,21 @@ export class SortService {
 
     public static compareDescending(object1: any, object2: any) {
 
-        if (SortService.attributeNameToBeSortedBy === '') {
+        if (SortService.attributeNameToBeSortedBy.length === 0) {
 
             if (object1 > object2) { return -1 }
             if (object1 < object2) { return 1 }
 
         } else {
 
-            if (object1[SortService.attributeNameToBeSortedBy] > object2[SortService.attributeNameToBeSortedBy]) { return -1 }
-            if (object1[SortService.attributeNameToBeSortedBy] < object2[SortService.attributeNameToBeSortedBy]) { return 1 }
+            for (const compareField of SortService.attributeNameToBeSortedBy) {
 
+                if (object1[compareField] === object2[compareField]) { continue }
+
+                if (object1[compareField] > object2[compareField]) { return -1 }
+                if (object1[compareField] < object2[compareField]) { return 1 }
+
+            }
         }
 
         return 0
