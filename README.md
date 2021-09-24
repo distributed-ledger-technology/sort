@@ -18,7 +18,7 @@ console.log(actualOutput)
 ```
 
 
-## Advanced Usage Example
+## Advanced Usage Example - Sort Array By Single Attribute
 
 ```ts 
 import { Direction, SortService } from "https://deno.land/x/sort/src/sort-service.ts"
@@ -44,7 +44,7 @@ console.log(actualOutput)
 
 ```
 
-## Very Advanced Usage Example
+## Advanced Usage Example - Sort Array By Multiple Attributes
 
 ```ts 
 import { Direction, SortService } from "https://deno.land/x/sort/src/sort-service.ts"
