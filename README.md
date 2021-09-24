@@ -9,13 +9,13 @@ Please check the [unit tests](https://deno.land/x/sort/src/sort-service.spec.ts)
 ```ts 
 import { Direction, SortService } from "https://deno.land/x/sort/src/sort-service.ts"
 
-    const testInput = [4, 9, 10, 8, 7]
+const testInput = [4, 9, 10, 8, 7]
 
-    const expectedOutput = [10, 9, 8, 7, 4]
+const expectedOutput = [10, 9, 8, 7, 4]
 
-    const actualOutput = SortService.sort(testInput, Direction.DESCENDING, [''])
+const actualOutput = SortService.sort(testInput, Direction.DESCENDING, [''])
 
-    console.log(actualOutput)
+console.log(actualOutput)
 
 ```
 
@@ -23,6 +23,8 @@ import { Direction, SortService } from "https://deno.land/x/sort/src/sort-servic
 ## Advanced Usage Example
 
 ```ts 
+import { Direction, SortService } from "https://deno.land/x/sort/src/sort-service.ts"
+
 const testInput = [
         {
             exchangeName: "Bitmex",
@@ -38,7 +40,7 @@ const testInput = [
         },
     ]
 
-    const expectedOutput = [
+const expectedOutput = [
         {
             exchangeName: "Binance",
             longRate: 51.36,
@@ -54,15 +56,17 @@ const testInput = [
         },
     ]
 
-    const actualOutput = SortService.sort(testInput, Direction.ASCENDING, ['longRate'])
+const actualOutput = SortService.sort(testInput, Direction.ASCENDING, ['longRate'])
 
-    console.log(actualOutput)
+console.log(actualOutput)
 
 ```
 
 ## Very Advanced Usage Example
 
 ```ts 
+import { Direction, SortService } from "https://deno.land/x/sort/src/sort-service.ts"
+
 const testInput = [
         {
             exchangeName: "Bitmex",
@@ -78,7 +82,7 @@ const testInput = [
         },
     ]
 
-    const expectedOutput = [
+const expectedOutput = [
         {
             exchangeName: "Binance",
             longRate: 51.36,
@@ -94,7 +98,8 @@ const testInput = [
         },
     ]
 
-    const actualOutput = SortService.sort(testInput, Direction.ASCENDING, ['longRate', 'exchangeName'])
+const actualOutput = SortService.sort(testInput, Direction.ASCENDING, ['longRate', 'exchangeName'])
 
-    console.log(actualOutput)
+console.log(actualOutput)
+
 ```
