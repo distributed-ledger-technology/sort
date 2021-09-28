@@ -9,7 +9,7 @@ Please check the [unit tests](https://deno.land/x/sort/src/sort-service.spec.ts)
 ## Simple Usage Example
 
 ```ts 
-import { Direction, SortService } from "https://deno.land/x/sort/src/sort-service.ts"
+import { Direction, SortService } from "https://deno.land/x/sort@v1.0.1/mod.ts"
 
 const testInput = [4, 9, 10, 8, 7]
 
@@ -23,7 +23,7 @@ console.log(actualOutput)
 ## Advanced Usage Example - Sort Array By Single Attribute
 
 ```ts 
-import { Direction, SortService } from "https://deno.land/x/sort/src/sort-service.ts"
+import { Direction, SortService } from "https://deno.land/x/sort@v1.0.1/mod.ts"
 
 const testInput = [
         {
@@ -49,7 +49,7 @@ console.log(actualOutput)
 ## Advanced Usage Example - Sort Array By Multiple Attributes
 
 ```ts 
-import { Direction, SortService } from "https://deno.land/x/sort/src/sort-service.ts"
+import { Direction, SortService } from "https://deno.land/x/sort@v1.0.1/mod.ts"
 
 const testInput = [
         {
