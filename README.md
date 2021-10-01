@@ -4,8 +4,6 @@ Sorting Arrays as simple as it gets.
   
 This module is published at: https://deno.land/x/sort.  
 
-Please check the [unit tests](https://deno.land/x/sort/src/sort-service.spec.ts) to see more usage examples.
-
 ## Simple Usage Example
 
 ```ts 
@@ -42,7 +40,11 @@ const testInput = [
     },
 ]
 
-const sortOptions: ISortOptions[] = [{ fieldName: 'longRate', direction: Direction.ASCENDING }, { fieldName: 'exchangeName', direction: Direction.DESCENDING }]
+const sortOptions: ISortOptions[] = [
+    { fieldName: 'longRate', direction: Direction.ASCENDING }, 
+    { fieldName: 'exchangeName', direction: Direction.DESCENDING }
+]
+
 const actualOutput = SortService.sort(testInput, sortOptions)
 
 
@@ -50,3 +52,5 @@ console.log(actualOutput)
 
 ```
 
+
+Please check the [unit tests](https://deno.land/x/sort/src/sort-service.spec.ts) to see more usage examples.
