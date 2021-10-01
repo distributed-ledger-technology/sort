@@ -1,7 +1,6 @@
 import { assertEquals } from "https://deno.land/std@0.86.0/testing/asserts.ts"
 import { Direction, SortService } from "./sort-service.ts"
 
-
 Deno.test("should sort an array of objects by a single attribute ascending", () => {
 
     const testInput = [
@@ -35,7 +34,7 @@ Deno.test("should sort an array of objects by a single attribute ascending", () 
         },
     ]
 
-    const actualOutput = SortService.sort(testInput, Direction.ASCENDING, ['longRate'])
+    const actualOutput = SortService.sort(testInput, [{ fieldName: 'longRate', direction: Direction.ASCENDING }])
 
     assertEquals(actualOutput.length, expectedOutput.length)
     assertEquals(actualOutput, expectedOutput)
@@ -79,7 +78,7 @@ Deno.test("should sort an array of objects by a single attribute descending", ()
 
     ]
 
-    const actualOutput = SortService.sort(testInput, Direction.DESCENDING, ['longRate'])
+    const actualOutput = SortService.sort(testInput, [{ fieldName: 'longRate', direction: Direction.DESCENDING }])
 
     assertEquals(actualOutput.length, expectedOutput.length)
     assertEquals(actualOutput, expectedOutput)
@@ -94,7 +93,7 @@ Deno.test("should sort an array of numbers ascending", () => {
 
     const expectedOutput = [4, 7, 8, 9, 10]
 
-    const actualOutput = SortService.sort(testInput, Direction.ASCENDING, [])
+    const actualOutput = SortService.sort(testInput, Direction.ASCENDING)
 
     assertEquals(actualOutput.length, expectedOutput.length)
     assertEquals(actualOutput, expectedOutput)
@@ -108,7 +107,7 @@ Deno.test("should sort an array of numbers descending", () => {
 
     const expectedOutput = [10, 9, 8, 7, 4]
 
-    const actualOutput = SortService.sort(testInput, Direction.DESCENDING, [])
+    const actualOutput = SortService.sort(testInput, Direction.DESCENDING)
 
     assertEquals(actualOutput.length, expectedOutput.length)
     assertEquals(actualOutput, expectedOutput)
@@ -139,7 +138,6 @@ Deno.test("should sort an array of objects by multiple attributes ascending", ()
             exchangeName: "Binance",
             longRate: 51.36,
         },
-
         {
             exchangeName: "Bitmex",
             longRate: 51.36,
@@ -150,11 +148,13 @@ Deno.test("should sort an array of objects by multiple attributes ascending", ()
         },
     ]
 
-    const actualOutput = SortService.sort(testInput, Direction.ASCENDING, ['longRate', 'exchangeName'])
+    const actualOutput = SortService.sort(testInput, [{ fieldName: 'longRate', direction: Direction.ASCENDING }, { fieldName: 'exchangeName', direction: Direction.ASCENDING }])
 
+    assertEquals(actualOutput.length, expectedOutput.length)
     assertEquals(actualOutput, expectedOutput)
 
 })
+
 
 Deno.test("should sort an array of objects by multiple attributes descending", () => {
 
@@ -191,7 +191,50 @@ Deno.test("should sort an array of objects by multiple attributes descending", (
 
     ]
 
-    const actualOutput = SortService.sort(testInput, Direction.DESCENDING, ['longRate', 'exchangeName'])
+    const actualOutput = SortService.sort(testInput, [{ fieldName: 'longRate', direction: Direction.DESCENDING }, { fieldName: 'exchangeName', direction: Direction.DESCENDING }])
+
+    assertEquals(actualOutput.length, expectedOutput.length)
+    assertEquals(actualOutput, expectedOutput)
+})
+
+
+Deno.test("should sort an array of objects by multiple attributes first ascending second descending", () => {
+
+    const testInput = [
+        {
+            exchangeName: "Bitmex",
+            longRate: 51.36,
+        },
+        {
+            exchangeName: "Binance",
+            longRate: 51.36,
+        },
+        {
+            exchangeName: "Bybit",
+            longRate: 55.36,
+        },
+    ]
+
+    const expectedOutput = [
+
+        {
+            exchangeName: "Bitmex",
+            longRate: 51.36,
+        },
+        {
+            exchangeName: "Binance",
+            longRate: 51.36,
+        },
+        {
+            exchangeName: "Bybit",
+            longRate: 55.36,
+        },
+
+
+
+    ]
+
+    const actualOutput = SortService.sort(testInput, [{ fieldName: 'longRate', direction: Direction.ASCENDING }, { fieldName: 'exchangeName', direction: Direction.DESCENDING }])
 
     assertEquals(actualOutput.length, expectedOutput.length)
     assertEquals(actualOutput, expectedOutput)

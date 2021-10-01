@@ -1,0 +1,1 @@
+deno test --allow-net src/sort-service.spec.ts

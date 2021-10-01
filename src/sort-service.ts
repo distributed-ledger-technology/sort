@@ -1,86 +1,60 @@
-// const compareName = function (object1: any, object2: any, attributeName: string) {
-//     if (object1[attributeName] > object2[attributeName]) { return -1 }
-//     if (object1[attributeName] < object2[attributeName]) { return 1 }
-//     return 0
-// }
 
 export enum Direction {
     ASCENDING,
     DESCENDING
 }
 
+export interface ISortOptions {
+    fieldName: string
+    direction: Direction
+}
+
 export class SortService {
 
-    private static attributeNameToBeSortedBy: string[] = []
+    private static sortOptions: ISortOptions[] | Direction = []
 
-    public static sort(arrayToBeSorted: any[], direction: Direction, toBeSortedBy: string[]) {
+    public static sort(arrayToBeSorted: any[], sortOptions: ISortOptions[] | Direction) {
 
-        if (toBeSortedBy !== undefined) {
-            SortService.attributeNameToBeSortedBy = toBeSortedBy
-        }
+        SortService.sortOptions = sortOptions
 
         let sortedArray
 
-        if (direction === Direction.ASCENDING) {
-
-            sortedArray = arrayToBeSorted.sort(SortService.compareAscending)
-
-        } else if (direction === Direction.DESCENDING) {
-
-            sortedArray = arrayToBeSorted.sort(this.compareDescending)
-
-        } else {
-
-            throw new Error("strange direction")
-
-        }
+        sortedArray = arrayToBeSorted.sort(SortService.compare)
 
         return sortedArray
 
     }
 
-    public static compareAscending(object1: any, object2: any) {
 
-        if (SortService.attributeNameToBeSortedBy.length === 0) {
+    public static compare(object1: any, object2: any) {
+
+        if (SortService.sortOptions === Direction.ASCENDING) {
 
             if (object1 < object2) { return -1 }
             if (object1 > object2) { return 1 }
 
-        } else {
-
-            for (const compareField of SortService.attributeNameToBeSortedBy) {
-
-
-                if (object1[compareField] === object2[compareField]) { continue }
-
-                if (object1[compareField] < object2[compareField]) { return -1 }
-
-                if (object1[compareField] > object2[compareField]) { return 1 }
-
-            }
-
-        }
-
-        return 0
-
-    }
-
-    public static compareDescending(object1: any, object2: any) {
-
-        if (SortService.attributeNameToBeSortedBy.length === 0) {
+        } else if (SortService.sortOptions === Direction.DESCENDING) {
 
             if (object1 > object2) { return -1 }
             if (object1 < object2) { return 1 }
 
         } else {
 
-            for (const compareField of SortService.attributeNameToBeSortedBy) {
+            for (const sortByEntry of SortService.sortOptions as ISortOptions[]) {
 
-                if (object1[compareField] === object2[compareField]) { continue }
+                if (object1[sortByEntry.fieldName] === object2[sortByEntry.fieldName]) { continue }
 
-                if (object1[compareField] > object2[compareField]) { return -1 }
-                if (object1[compareField] < object2[compareField]) { return 1 }
+                if (sortByEntry.direction === Direction.ASCENDING) {
 
+                    if (object1[sortByEntry.fieldName] < object2[sortByEntry.fieldName]) { return -1 }
+                    if (object1[sortByEntry.fieldName] > object2[sortByEntry.fieldName]) { return 1 }
+
+                } else if (sortByEntry.direction === Direction.DESCENDING) {
+
+                    if (object1[sortByEntry.fieldName] > object2[sortByEntry.fieldName]) { return -1 }
+                    if (object1[sortByEntry.fieldName] < object2[sortByEntry.fieldName]) { return 1 }
+
+                }
             }
         }
 
