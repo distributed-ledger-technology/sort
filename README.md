@@ -8,7 +8,7 @@ This module is published at: https://deno.land/x/sort.
 
 ```ts 
 
-import { SortService, Direction } from "https://deno.land/x/sort@v1.1.0/mod.ts"
+import { SortService, Direction } from "https://deno.land/x/sort@v1.1.1/mod.ts"
 
 const testInput = [4, 9, 10, 8, 7]
 
@@ -23,7 +23,7 @@ console.log(actualOutput)
 
 ```ts 
 
-import { SortService, ISortOptions, Direction } from "https://deno.land/x/sort@v1.1.0/mod.ts"
+import { SortService, ISortOptions, Direction } from "https://deno.land/x/sort@v1.1.1/mod.ts"
 
 const testInput = [
     {
