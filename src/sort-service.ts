@@ -11,36 +11,32 @@ export interface ISortOptions {
 
 export class SortService {
 
-    private static sortOptions: ISortOptions[] | Direction = []
+    private static options: ISortOptions[] | Direction = []
 
-    public static sort(arrayToBeSorted: any[], sortOptions: ISortOptions[] | Direction) {
+    public static sort(arrayToBeSorted: any[], options: ISortOptions[] | Direction) {
 
-        SortService.sortOptions = sortOptions
+        SortService.options = options
 
-        let sortedArray
-
-        sortedArray = arrayToBeSorted.sort(SortService.compare)
-
-        return sortedArray
+        return arrayToBeSorted.sort(SortService.compare)
 
     }
 
 
     public static compare(object1: any, object2: any) {
 
-        if (SortService.sortOptions === Direction.ASCENDING) {
+        if (SortService.options === Direction.ASCENDING) {
 
             if (object1 < object2) { return -1 }
             if (object1 > object2) { return 1 }
 
-        } else if (SortService.sortOptions === Direction.DESCENDING) {
+        } else if (SortService.options === Direction.DESCENDING) {
 
             if (object1 > object2) { return -1 }
             if (object1 < object2) { return 1 }
 
         } else {
 
-            for (const sortByEntry of SortService.sortOptions as ISortOptions[]) {
+            for (const sortByEntry of SortService.options as ISortOptions[]) {
 
                 if (object1[sortByEntry.fieldName] === object2[sortByEntry.fieldName]) { continue }
 
