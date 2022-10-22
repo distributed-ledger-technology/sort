@@ -1,4 +1,4 @@
-# Sort
+# CULT Sort Module
 
 Sorting Arrays as simple as it gets.  
   
@@ -54,3 +54,9 @@ console.log(actualOutput)
 
 
 Please check the [unit tests](https://deno.land/x/sort/src/sort-service.spec.ts) to see more usage examples.
+
+### The CULT Open Source Movement
+Whenever you program Open Source modules which can be valuable for the [cultdao.io](https://cultdao.io), feel free to submit a corresponding [act of revolt proposal](https://revolt.cultdao.io/submitProposal). You might be rewarded by teh many.
+
+### CULT Donations
+If you like my work, please consider donating some Ether, CULT or RVLT to 0x9E972a43B3B8D68cD70930697E16429E47E88151. You might also be interested in contributing to cultdonations.org.
