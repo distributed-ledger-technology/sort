@@ -2,7 +2,7 @@
 
 Sorting Arrays as simple as it gets.  
   
-This [deno module] is published at: https://deno.land/x/sort.  
+This [deno module](https://deno.land/x/sort) is published at: https://deno.land/x/sort.  
 
 
 ## Simple Usage Example
